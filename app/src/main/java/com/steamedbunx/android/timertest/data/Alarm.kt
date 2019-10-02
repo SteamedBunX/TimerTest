@@ -7,7 +7,13 @@ import com.steamedbunx.android.timertest.R
 
 class Alarm(val item: Item, private val context: Context) {
 
-    var timeLeft = item.timeInMS
+
+    // record how much time is left,
+    // used to keep track of how much time left
+    // also calculate the string for timer
+    var timeLeft = item.timeInSec
+    // used to track the progress bar's current progression
+    var progress = 0
     var isFinished = false
     // Channel ID
 //    companion object {
@@ -16,15 +22,42 @@ class Alarm(val item: Item, private val context: Context) {
     // count down goes down every second
     fun tick() {
         timeLeft--
+        progress++
         if (timeLeft <= 0) {
             onFinish()
         }
     }
 
+    // get the current time in a string format
+    fun getTimerString(): String {
+        val minuteUntilFinisheed : String =
+            if (timeLeft / 60 >= 10) {
+                (timeLeft / 60).toString()
+            } else {
+                "0" + timeLeft / 60
+            }
+        val secondsInMinuteUntilFinished = timeLeft % 60
+        val timeLeftString = "$minuteUntilFinisheed : ${
+        if (secondsInMinuteUntilFinished >= 10) {
+            secondsInMinuteUntilFinished
+        } else {
+            "0" + secondsInMinuteUntilFinished
+        }}"
+        return timeLeftString
+    }
+
+    // used to set the max for progress bar
+    fun getMaxProgress(): Int {
+        return item.timeInSec
+    }
+
     // this will not be in the actual product, but for learning sake
-    fun tickDown(){
+    fun tickDown() {
         timeLeft -= 10
+        progress += 10
         if (timeLeft <= 0) {
+            timeLeft = 0
+            progress = item.timeInSec
             onFinish()
         }
     }
