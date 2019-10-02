@@ -11,7 +11,7 @@
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EggRoll"
+        android:text="@string/egg_roll"
         android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,8 @@
         android:src="@drawable/pork_egg_rolls"
         app:layout_constraintEnd_toStartOf="@+id/item_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/egg_rolls_description" />
 
     <me.zhanghai.android.materialprogressbar.MaterialProgressBar
         style="@style/Widget.MaterialProgressBar.ProgressBar"
@@ -57,7 +58,7 @@
         android:id="@+id/button_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RESTART"
+        android:text="@string/restart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_tick_down"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,7 +69,7 @@
         android:id="@+id/button_tick_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TICKDOWN"
+        android:text="@string/tickdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_restart"

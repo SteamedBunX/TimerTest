@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TimerTest</string>
+    <string name="restart">RESTART</string>
+    <string name="tickdown">TICKDOWN</string>
+    <string name="egg_roll">Egg Roll</string>
+    <string name="egg_rolls_description">An Image of Egg Rolls</string>
 </resources>
