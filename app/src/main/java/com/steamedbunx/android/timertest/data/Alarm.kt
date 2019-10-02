@@ -21,6 +21,14 @@ class Alarm(val item: Item, private val context: Context) {
         }
     }
 
+    // this will not be in the actual product, but for learning sake
+    fun tickDown(){
+        timeLeft -= 10
+        if (timeLeft <= 0) {
+            onFinish()
+        }
+    }
+
     // when count down reaches 0
     // a notification will be sent
     // the isFinished will also be fliped to true to notify upper class
