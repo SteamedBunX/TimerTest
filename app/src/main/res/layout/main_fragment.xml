@@ -66,7 +66,8 @@
             app:layout_constraintEnd_toStartOf="@+id/button_tick_down"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.217" />
 
         <Button
             android:id="@+id/button_tick_down"
@@ -77,6 +78,47 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button_restart"
             app:layout_constraintTop_toTopOf="@+id/button_restart" />
+
+        <Button
+            android:id="@+id/button_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="112dp"
+            android:text="SOUND"
+            app:layout_constraintEnd_toStartOf="@+id/button_notification"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_restart" />
+
+        <Button
+            android:id="@+id/button_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOTIFICATION"
+            app:layout_constraintEnd_toStartOf="@+id/button_notification_f"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_sound"
+            app:layout_constraintTop_toTopOf="@+id/button_sound" />
+
+        <Button
+            android:id="@+id/button_notification_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOTIFICATION F"
+            app:layout_constraintEnd_toStartOf="@+id/button_popup"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_notification"
+            app:layout_constraintTop_toTopOf="@+id/button_notification" />
+
+        <Button
+            android:id="@+id/button_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POP UP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_notification_f"
+            app:layout_constraintTop_toTopOf="@+id/button_notification_f" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

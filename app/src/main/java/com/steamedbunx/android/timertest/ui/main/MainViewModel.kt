@@ -10,7 +10,7 @@ import com.steamedbunx.android.timertest.data.Item
 
 class MainViewModel(val context: Context) : ViewModel() {
     // A mock model of eggroll item
-    val item: Item = Item("Pork Egg Rolls","pork_egg_rolls", 30)
+    val item: Item = Item("Pork Egg Rolls","pork_egg_rolls.webp", 30)
     // LiveData for the Alarm interface to show
 
     val handler = Handler()

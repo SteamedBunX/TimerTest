@@ -16,9 +16,9 @@ class Alarm(val item: Item, private val context: Context) {
     var progress = 0
     var isFinished = false
     // Channel ID
-//    companion object {
-//        const val CHANNEL_ID = "Fryer Alarm"
-//    }
+    companion object {
+        const val CHANNEL_ID = "Fryer Alarm"
+    }
     // count down goes down every second
     fun tick() {
         timeLeft--
@@ -69,16 +69,5 @@ class Alarm(val item: Item, private val context: Context) {
 
         isFinished = true
 
-//        var builder = NotificationCompat.Builder(context, CHANNEL_ID)
-//            .setShortcutId("13")
-//            .setSmallIcon(R.drawable.ic_alarm)
-//            .setContentTitle("Frying Complete!")
-//            .setContentText("Your ${item.name} is done frying!")
-//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//            .setAutoCancel(true)
-//
-//        with(NotificationManagerCompat.from(context)){
-//            notify(notifyID,builder.build())
-//        }
     }
 }
