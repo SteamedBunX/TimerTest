@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.data.Alarm.Companion.CHANNEL_ID
 import com.steamedbunx.android.timertest.databinding.MainFragmentBinding
+import com.steamedbunx.android.timertest.util.NotificationHelper
 
 class MainFragment : Fragment() {
 
@@ -25,6 +26,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: MainFragmentBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var viewModelFactory: MainViewModelFactory
+    private lateinit var notificationHelper:NotificationHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +40,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        notificationHelper = NotificationHelper.getInstance()
         viewModelFactory = MainViewModelFactory(requireContext())
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.alarm_changed.observe(this, Observer {
@@ -63,7 +66,7 @@ class MainFragment : Fragment() {
             viewModel.resetAlarm()
         }
         binding.buttonNotification.setOnClickListener {
-            showNotification()
+            notificationHelper.showNotification(requireContext())
         }
 
 
@@ -74,19 +77,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun showNotification() {
-        var builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-            .setShortcutId("13")
-            .setSmallIcon(R.drawable.ic_alarm)
-            .setContentTitle("Frying Complete!")
-            .setContentText("Your EggRoll is done frying!")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
 
-        with(NotificationManagerCompat.from(requireContext())) {
-            notify(5, builder.build())
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
