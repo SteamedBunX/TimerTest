@@ -31,6 +31,7 @@ class NotificationHelper {
             setSmallIcon(R.drawable.ic_alarm)
             setContentTitle("Frying Complete!")
             setContentText("Your EggRoll is done frying!")
+            setDefaults(NotificationCompat.DEFAULT_SOUND)
             setPriority(NotificationCompat.PRIORITY_HIGH)
             setAutoCancel(true)
 
