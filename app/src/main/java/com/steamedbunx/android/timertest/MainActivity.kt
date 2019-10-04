@@ -1,13 +1,9 @@
 package com.steamedbunx.android.timertest
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.steamedbunx.android.timertest.data.Alarm.Companion.CHANNEL_ID
 import com.steamedbunx.android.timertest.ui.main.MainFragment
-import com.steamedbunx.android.timertest.util.NotificationHelper
+import com.steamedbunx.android.timertest.util.notificationControl.NotificationHelper
 
 class MainActivity : AppCompatActivity() {
 

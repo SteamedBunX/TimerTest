@@ -1,4 +1,4 @@
-package com.steamedbunx.android.timertest.util
+package com.steamedbunx.android.timertest.util.notificationControl
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -11,7 +11,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.steamedbunx.android.timertest.MainActivity
 import com.steamedbunx.android.timertest.R
-import com.steamedbunx.android.timertest.data.Item
 
 class NotificationHelper {
 
@@ -19,7 +18,8 @@ class NotificationHelper {
     var currentId = 0
 
     companion object {
-        private val helper: NotificationHelper = NotificationHelper()
+        private val helper: NotificationHelper =
+            NotificationHelper()
         fun getInstance(): NotificationHelper {
             return helper
         }
@@ -89,14 +89,6 @@ class NotificationHelper {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
             setContentIntent(pendingIntent)
-        }
-        val intent = Intent(context.applicationContext, AlarmReceiver::class.java).apply {
-            // 2
-            action = context.getString(R.string.action_notify_administer_medication)
-            // 3
-            type = "$day-${reminderData.name}-${reminderData.medicine}-${reminderData.type.name}"
-            // 4
-            putExtra(ReminderDialog.KEY_ID, reminderData.id)
         }
 
     }

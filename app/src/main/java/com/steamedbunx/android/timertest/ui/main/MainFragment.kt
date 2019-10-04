@@ -1,6 +1,5 @@
 package com.steamedbunx.android.timertest.ui.main
 
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,15 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.steamedbunx.android.timertest.R
-import com.steamedbunx.android.timertest.data.Alarm.Companion.CHANNEL_ID
 import com.steamedbunx.android.timertest.databinding.MainFragmentBinding
-import com.steamedbunx.android.timertest.util.NotificationHelper
+import com.steamedbunx.android.timertest.util.notificationControl.NotificationHelper
 
 class MainFragment : Fragment() {
 
@@ -28,7 +23,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: MainFragmentBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var viewModelFactory: MainViewModelFactory
-    private lateinit var notificationHelper:NotificationHelper
+    private lateinit var notificationHelper: NotificationHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
