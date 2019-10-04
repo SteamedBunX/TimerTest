@@ -5,8 +5,7 @@ import java.util.*
 
 class AlarmData(val id: Int,
                 val dishName: String,
-                val timeTillAlarm: Long,
-                val bigIconBitmap: Bitmap){
+                val timeTillAlarm: Long){
     var alarmTime:Long = 0
     init{
         alarmTime = timeTillAlarm + System.currentTimeMillis()

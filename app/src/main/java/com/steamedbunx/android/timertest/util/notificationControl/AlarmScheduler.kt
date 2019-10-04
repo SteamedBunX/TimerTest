@@ -4,15 +4,16 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.data.AlarmData
 import java.util.*
 import java.util.Calendar.*
 
 class AlarmScheduler {
 
-    fun createPendingIntent(context: Context, alarmData: AlarmData, day: String?): PendingIntent?{
+    fun createPendingIntent(context: Context, alarmData: AlarmData): PendingIntent?{
         val intent = Intent(context.applicationContext, AlarmReceiver::class.java).apply {
-            action = "com.steamedbunx.android.timertest.action.FRY_COMPLETE"
+            action = context.getString(R.string.ACTION_FRY_COMPLETE)
             type = "${alarmData.id}-${alarmData.dishName}-${alarmData.alarmTime} #"
             putExtra("id", alarmData.id)
         }

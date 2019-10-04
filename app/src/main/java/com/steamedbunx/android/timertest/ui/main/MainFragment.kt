@@ -1,5 +1,8 @@
 package com.steamedbunx.android.timertest.ui.main
 
+import android.app.AlarmManager
+import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -11,7 +14,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.steamedbunx.android.timertest.R
+import com.steamedbunx.android.timertest.data.AlarmData
 import com.steamedbunx.android.timertest.databinding.MainFragmentBinding
+import com.steamedbunx.android.timertest.util.notificationControl.AlarmScheduler
 import com.steamedbunx.android.timertest.util.notificationControl.NotificationHelper
 
 class MainFragment : Fragment() {
@@ -24,6 +29,7 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var viewModelFactory: MainViewModelFactory
     private lateinit var notificationHelper: NotificationHelper
+    private lateinit var alarmManager:AlarmManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +43,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         notificationHelper = NotificationHelper.getInstance()
         viewModelFactory = MainViewModelFactory(requireContext())
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
@@ -65,6 +72,9 @@ class MainFragment : Fragment() {
         binding.buttonNotification.setOnClickListener {
             notificationHelper.showNotification(requireContext())
         }
+        binding.buttonNotificationF.setOnClickListener {
+            createAlarm()
+        }
 
 
         // Dirty asf, just testing, don't do this kids
@@ -74,6 +84,12 @@ class MainFragment : Fragment() {
         }
     }
 
+    fun createAlarm(){
+        val alarmScheduler = AlarmScheduler()
+        val alarmData = AlarmData(1,"Egg Roll", 10000)
+        val pending = alarmScheduler.createPendingIntent(requireContext(),alarmData)
+        alarmScheduler.scheduleAlarm(alarmData,pending,alarmManager)
+    }
 
 
     override fun onDestroy() {

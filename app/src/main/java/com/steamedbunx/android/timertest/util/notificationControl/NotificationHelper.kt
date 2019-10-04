@@ -25,7 +25,6 @@ class NotificationHelper {
         }
     }
 
-
     fun showNotification(context: Context) {
         var builder = NotificationCompat.Builder(context, channelId).apply {
             // basic notification setting
@@ -71,7 +70,9 @@ class NotificationHelper {
         }
     }
 
-    fun createScheduledNotification(context: Context, itemName: String,
+    // what the notification method should be, but since i'm just testing out some functionalities.
+    // i won't be using this one.
+    fun createDetailedNotification(context: Context, itemName: String,
                                     largeIcon: Bitmap,
                                     timeUntilNotification: Int){
 
