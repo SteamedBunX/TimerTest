@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.data.AlarmData
@@ -67,7 +66,7 @@ class MainFragment : Fragment() {
         })
 
         viewModel.dialogText.observe(this, Observer {
-            textView.text = it
+            textView_change_by_dialog.text = it
         })
 
         // onClickListeners
