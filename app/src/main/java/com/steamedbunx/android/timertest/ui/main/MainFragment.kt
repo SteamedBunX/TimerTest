@@ -11,12 +11,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.data.AlarmData
 import com.steamedbunx.android.timertest.databinding.MainFragmentBinding
+import com.steamedbunx.android.timertest.ui.MainDialog.TestDialogFragment
 import com.steamedbunx.android.timertest.util.notificationControl.AlarmScheduler
 import com.steamedbunx.android.timertest.util.notificationControl.NotificationHelper
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -28,7 +31,7 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var viewModelFactory: MainViewModelFactory
     private lateinit var notificationHelper: NotificationHelper
-    private lateinit var alarmManager:AlarmManager
+    private lateinit var alarmManager: AlarmManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +48,9 @@ class MainFragment : Fragment() {
         alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         notificationHelper = NotificationHelper.getInstance()
         viewModelFactory = MainViewModelFactory(requireContext())
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel = requireActivity().run {
+            ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+        }
         viewModel.alarmChanged.observe(this, Observer {
             if (it)
                 binding.apply {
@@ -61,6 +66,10 @@ class MainFragment : Fragment() {
                 }
         })
 
+        viewModel.dialogText.observe(this, Observer {
+            textView.text = it
+        })
+
         // onClickListeners
         binding.buttonTickDown.setOnClickListener {
             viewModel.tickDown()
@@ -74,6 +83,9 @@ class MainFragment : Fragment() {
         binding.buttonNotificationF.setOnClickListener {
             createAlarm()
         }
+        binding.buttonPopup.setOnClickListener {
+            showDialog()
+        }
 
 
         // Dirty asf, just testing, don't do this kids
@@ -83,13 +95,17 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun createAlarm(){
+    fun createAlarm() {
         val alarmScheduler = AlarmScheduler()
-        val alarmData = AlarmData(1,"Egg Roll", 10000)
-        val pending = alarmScheduler.createPendingIntent(requireContext(),alarmData)
-        alarmScheduler.scheduleAlarm(alarmData,pending,alarmManager)
+        val alarmData = AlarmData(1, "Egg Roll", 10000)
+        val pending = alarmScheduler.createPendingIntent(requireContext(), alarmData)
+        alarmScheduler.scheduleAlarm(alarmData, pending, alarmManager)
     }
 
+    fun showDialog() {
+        val dialog = TestDialogFragment.newInstance()
+        dialog.show(requireFragmentManager(), "test_dialog_fragment")
+    }
 
     override fun onDestroy() {
         super.onDestroy()
