@@ -5,4 +5,7 @@
     <string name="egg_roll">Egg Roll</string>
     <string name="egg_rolls_description">An Image of Egg Rolls</string>
     <string name="ACTION_FRY_COMPLETE">com.steamedbunx.android.timertest.action.FRY_COMPLETE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

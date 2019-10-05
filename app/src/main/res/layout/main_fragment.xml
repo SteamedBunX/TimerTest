@@ -120,5 +120,15 @@
             app:layout_constraintStart_toEndOf="@+id/button_notification_f"
             app:layout_constraintTop_toTopOf="@+id/button_notification_f" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/button_restart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

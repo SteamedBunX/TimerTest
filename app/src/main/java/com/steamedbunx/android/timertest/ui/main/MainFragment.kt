@@ -2,7 +2,6 @@ package com.steamedbunx.android.timertest.ui.main
 
 import android.app.AlarmManager
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -47,7 +46,7 @@ class MainFragment : Fragment() {
         notificationHelper = NotificationHelper.getInstance()
         viewModelFactory = MainViewModelFactory(requireContext())
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.alarm_changed.observe(this, Observer {
+        viewModel.alarmChanged.observe(this, Observer {
             if (it)
                 binding.apply {
                     textTimer.text = viewModel.alarm.getTimerString()
