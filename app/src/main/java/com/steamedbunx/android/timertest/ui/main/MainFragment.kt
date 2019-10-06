@@ -16,6 +16,7 @@ import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.data.AlarmData
 import com.steamedbunx.android.timertest.databinding.MainFragmentBinding
 import com.steamedbunx.android.timertest.ui.MainDialog.TestDialogFragment
+import com.steamedbunx.android.timertest.ui.SoundDialog.SoundDialogFragment
 import com.steamedbunx.android.timertest.util.notificationControl.AlarmScheduler
 import com.steamedbunx.android.timertest.util.notificationControl.NotificationHelper
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -85,6 +86,9 @@ class MainFragment : Fragment() {
         binding.buttonPopup.setOnClickListener {
             showDialog()
         }
+        binding.buttonSound.setOnClickListener {
+            showSoundDialog()
+        }
 
 
         // Dirty asf, just testing, don't do this kids
@@ -104,6 +108,11 @@ class MainFragment : Fragment() {
     fun showDialog() {
         val dialog = TestDialogFragment.newInstance()
         dialog.show(requireFragmentManager(), "test_dialog_fragment")
+    }
+
+    fun showSoundDialog(){
+        val dialog = SoundDialogFragment.newInstance()
+        dialog.show(requireFragmentManager(),"sound_dialog_fragment")
     }
 
     override fun onDestroy() {
