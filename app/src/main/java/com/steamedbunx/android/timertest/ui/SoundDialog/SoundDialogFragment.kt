@@ -17,6 +17,7 @@ import com.steamedbunx.android.timertest.R
 import com.steamedbunx.android.timertest.databinding.SoundDialogFragmentBinding
 
 
+@Suppress("DEPRECATION")
 class SoundDialogFragment : DialogFragment() {
 
     lateinit var soundPool:SoundPool
@@ -64,14 +65,10 @@ class SoundDialogFragment : DialogFragment() {
         }
         sound = soundPool.load(requireContext(), R.raw.beeps, 1)
         Log.i("SoundPool", "Sound $sound LoadingStart" )
-        soundPool.setOnLoadCompleteListener { soundPool, sampleId, status ->
+        soundPool.setOnLoadCompleteListener { soundPool, sampleId, _ ->
             soundPool.play(sampleId, 1F,1F,1,-1,1F)
             Log.i("SoundPool", "Sound $sound Loaded")
         }
-    }
-
-    private fun startSound(){
-
     }
 
     private fun stopSound(){
