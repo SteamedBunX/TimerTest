@@ -1,5 +1,5 @@
 # TimerTest
-A dirty project used to try out some features of android. 
+A dirty project used to try out some features of android. Optimized for 7-8in screen tablet(Walmart 70bucks tablet)
 
 Features tested:
 
